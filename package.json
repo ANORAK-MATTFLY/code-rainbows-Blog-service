@@ -1,0 +1,24 @@
+{
+  "name": "blogging-service",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "ANORAK-MATTFLY",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "apollo-server": "^2.22.1",
+    "apollo-server-express": "^2.22.1",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "esm-node": "^1.0.7",
+    "express": "^4.17.1",
+    "graphql": "^15.5.0",
+    "mocha": "^8.3.2",
+    "mongoose": "^5.12.2",
+    "nodemon": "^2.0.7",
+    "uuid": "^8.3.2"
+  }
+}
