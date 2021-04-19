@@ -9,14 +9,21 @@ const typeDefs = gql`
     tags: [String!]
     }
 
+    type Author {
+        id: String!
+        authorName: String!
+        authorProfilePicture: String!
+    }
+
     type Query {
-    getPostById(id:ID): Post!
-    getPost: Post!
+    getPostById(id : String!): Post!
+    getPosts: [Post!]
     }
 
     type Mutation {
         createPost( title: String!, content: String!): String!
         deletePost(id: String!): String!
+        updatePost(id: String!, title: String!, content: String!): String!
     }
 `;
 

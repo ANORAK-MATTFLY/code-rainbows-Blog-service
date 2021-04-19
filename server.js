@@ -25,6 +25,7 @@ const mongoConfig = {
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: true,
+    useFindAndModify: false,
 };
 
 mongoose.connect(`mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.ojnan.mongodb.net/${process.env.MONGO_DATABASE}?retryWrites=true&w=majority`, mongoConfig).then(() =>
