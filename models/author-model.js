@@ -16,6 +16,10 @@ const AuthorSchema = new Schema({
         type: String,
         required: true,
     },
+    posts: {
+        type: Array,
+        require: false,
+    }
 });
 
 module.exports = mongoose.model("Author", AuthorSchema);

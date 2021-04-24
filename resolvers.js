@@ -43,7 +43,8 @@ const resolvers = {
             const author = await Author({
                 id: await uuidv4(),
                 authorName,
-                authorProfilePicture
+                authorProfilePicture,
+                posts: await Post.find({}),
             });
             await author.save().then(result => result).catch(error => { throw new Error(error); });
             try {
@@ -59,7 +60,7 @@ const resolvers = {
         async createPost(_, { title, content, thumbnail, tags }, __) {
             const post = await Post({
                 id: await uuidv4(),
-                authorId: "6a8d04cd-1613-4a94-9259-abde996d4df8",
+                authorId: "5f0b2010-d0b4-4fcb-b68a-209620e4c811",
                 title,
                 content,
                 thumbnail,
