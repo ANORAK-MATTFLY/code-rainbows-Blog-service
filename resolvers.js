@@ -56,12 +56,13 @@ const resolvers = {
             }
         },
 
-        async createPost(_, { title, content, tags }, __) {
+        async createPost(_, { title, content, thumbnail, tags }, __) {
             const post = await Post({
                 id: await uuidv4(),
                 authorId: "6a8d04cd-1613-4a94-9259-abde996d4df8",
                 title,
                 content,
+                thumbnail,
                 tags,
                 releaseDate: `Released on  ${Date.now('MM DD YYYY')}`,
             });

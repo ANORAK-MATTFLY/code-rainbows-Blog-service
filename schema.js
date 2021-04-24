@@ -6,6 +6,7 @@ const typeDefs = gql`
         authorId: String!
         title: String!
         content: String!
+        thumbnail: String!
         viewCount: Int
         tags: [String!]
         releaseDate: String!
@@ -27,7 +28,7 @@ const typeDefs = gql`
 
     type Mutation {
         createAuthor(authorName: String!, authorProfilePicture: String!): String!
-        createPost( title: String!, content: String!, tags: [String!]): String!
+        createPost( title: String!, content: String!, thumbnail: String!, tags: [String!]): String!
         deletePost(id: String!): String!
         updatePost(id: String!, title: String!, content: String!): String!
     }
