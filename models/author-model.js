@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const postAuthor = new Schema({
+const AuthorSchema = new Schema({
     id: {
         type: String,
         required: true,
@@ -18,4 +18,4 @@ const postAuthor = new Schema({
     },
 });
 
-module.exports = mongoose.model("Post", postAuthor);
+module.exports = mongoose.model("Author", AuthorSchema);

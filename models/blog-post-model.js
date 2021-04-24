@@ -22,6 +22,14 @@ const postSchema = new Schema({
     },
     tags: {
         type: [String]
+    },
+    authorId: {
+        type: String,
+        required: true,
+    },
+    releaseDate: {
+        type: String,
+        required: true,
     }
 });
 
