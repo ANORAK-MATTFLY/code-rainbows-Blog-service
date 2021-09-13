@@ -24,7 +24,7 @@ const server = new ApolloServer({
 
 
 mongoose.connect(`mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.ojnan.mongodb.net/blog${process.env.MONGO_DATABASE}?retryWrites=true&w=majority`, mongoConfig).then(() =>
-    server.listen(port).then(({ url }) => {
+    server.listen(port || 5000).then(({ url }) => {
         console.log(`"https://rainbow-analytics-api.herokuapp.com/graphql"`);
     })
 ).catch(error => {
