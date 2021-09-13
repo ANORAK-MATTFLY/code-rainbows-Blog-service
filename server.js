@@ -20,7 +20,7 @@ const server = new ApolloServer({
 });
 
 
-mongoose.connect(`mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.ojnan.mongodb.net/${process.env.MONGO_DATABASE}?retryWrites=true&w=majority`, mongoConfig).then(() =>
+mongoose.connect(`mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.ojnan.mongodb.net/blog${process.env.MONGO_DATABASE}?retryWrites=true&w=majority`, mongoConfig).then(() =>
     server.listen(4001).then(({ url }) => {
         console.log(`🚀 Server ready at ${url}`);
     })

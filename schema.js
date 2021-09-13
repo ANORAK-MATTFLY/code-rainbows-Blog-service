@@ -1,6 +1,12 @@
 const { gql } = require("apollo-server");
 
 const typeDefs = gql`
+    type Page {
+        # id: String!
+        title: String!
+        visits: Int!
+    }
+
     type Post {
         id: String!
         authorId: String!
@@ -22,11 +28,14 @@ const typeDefs = gql`
 
     type Query {
         getPostById(id : String!): Post!
+        getPageCount(id: String!): Page!
         getAllPosts: [Post!]
         getAuthor(id: String!): Author!
     }
 
     type Mutation {
+        createPage(title: String!): String!
+        updatePageVisitById(id: String!): String!
         createAuthor(authorName: String!, authorProfilePicture: String!): String!
         createPost( title: String!, content: String!, thumbnail: String!, tags: [String!]): String!
         deletePost(id: String!): String!

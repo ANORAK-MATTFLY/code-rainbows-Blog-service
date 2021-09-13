@@ -1,10 +1,26 @@
 const Post = require("./models/blog-post-model");
 const Author = require("./models/author-model");
+const Page = require("./models/page-model");
 const { v4: uuidv4 } = require("uuid");
-
+const mongoose = require("mongoose");
 
 const resolvers = {
     Query: {
+        async getPageCount(_, { id }, __) {
+            try {
+                const page = await Page.findOne({ id }, (error, data) => {
+                    if (data) {
+                        return data;
+                    } else {
+                        return error;
+                    }
+                });
+                return page;
+            } catch (error) {
+                throw new Error(error);
+            }
+        },
+
         async getAuthor(_, { id }, __) {
             try {
                 const author = await Author.findOne({ id }, (error, data) => {
@@ -39,39 +55,16 @@ const resolvers = {
     },
 
     Mutation: {
-        async createAuthor(_, { authorName, authorProfilePicture }, __) {
-            const author = await Author({
+        async createPage(_, { title }, __) {
+            const page = await Page({
                 id: await uuidv4(),
-                authorName,
-                authorProfilePicture,
-                posts: await Post.find({}),
-            });
-            await author.save().then(result => result).catch(error => { throw new Error(error); });
-            try {
-                if (author != null) {
-                    return "A new author has been created!";
-                }
-            }
-            catch (error) {
-                throw new Error(error);
-            }
-        },
-
-        async createPost(_, { title, content, thumbnail, tags }, __) {
-            const post = await Post({
-                id: await uuidv4(),
-                authorId: "5f0b2010-d0b4-4fcb-b68a-209620e4c811",
                 title,
-                content,
-                thumbnail,
-                tags,
-                releaseDate: `Released on  ${Date.now('MM DD YYYY')}`,
+                visits: 1,
             });
-
-            await post.save().then(result => result).catch(error => { throw new Error(error); });
+            await page.save().then(result => result).catch(error => { throw new Error(error); });
             try {
-                if (post != null) {
-                    return "The post has been created!";
+                if (page != null) {
+                    return "A new page has been created!";
                 }
             }
             catch (error) {
@@ -79,15 +72,17 @@ const resolvers = {
             }
         },
 
-        async deletePost(_, { id }, __) {
-            Post.findOneAndDelete(id, (error) => {
-                if (error)
-                    return error;
-                else
-                    return "Operation proceed successfully";
-            });
-            return "Success!!!";
+        async updatePageVisitById(_, { id }, __) {
+            const visitCount = await Page.findOne({ _id: id }).exec();
+            try {
+                await Page.findByIdAndUpdate({ _id: id }, { visits: visitCount.visits + 1 })
+                return "Success"
+            }
+            catch (error) {
+                throw new Error(error);
+            }
         },
+
     }
 };
 
