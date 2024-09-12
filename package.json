@@ -9,11 +9,11 @@
   },
   "dependencies": {
     "@apollo/federation": "^0.23.1",
-    "apollo-server": "^2.22.1",
+    "apollo-server": "^3.13.0",
     "apollo-server-express": "^2.22.1",
     "dotenv": "^8.2.0",
     "graphql": "^15.5.0",
-    "mongoose": "^5.12.2",
+    "mongoose": "^5.13.20",
     "nodemon": "^2.0.7",
     "uuid": "^8.3.2"
   }
